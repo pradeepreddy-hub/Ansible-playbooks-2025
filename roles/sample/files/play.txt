@@ -1,0 +1,1 @@
+{{ name }} works as {{ domain }} in {{ company }} hostname of the server is {{ ansible_hostname }} with a processor {{ ansible_processor }} and the date and time is {{ ansible_date_time }}
