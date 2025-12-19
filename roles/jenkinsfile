@@ -1,16 +1,20 @@
 pipeline {
+    agent any
 
-agent any
+    stages {
+        stage('Checkout') {
+            steps {
+                checkout scm
+            }
+        }
 
-parameters { choice (name:'ENV', choices: [ 'dev', 'staging', 'prod' ]) }
-
-stages { 
-  stage ( 'checkout' ){
- 
-   steps { sh 'git url' }
-  }
- stage ( 'build' ) {
-   steps { sh 'mvn clean compile' }   
- }
-}
+        stage('Build') {
+            steps {
+                sh '''
+                   ansible --version
+                   ansible-playbook -i inventory roles/tomcat.yml
+                '''
+            }
+        }
+    }
 }
