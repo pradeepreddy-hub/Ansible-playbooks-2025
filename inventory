@@ -1,2 +1,2 @@
-[tomcat]
+[all]
 172.31.3.190 ansible_user=ubuntu ansible_become=true
