@@ -1,1 +1,16 @@
+pipeline {
 
+agent any
+
+parameters { choice (name:'ENV', choices: [ 'dev', 'staging', 'prod' ]) }
+
+stages { 
+  stage ( 'checkout' ){
+ 
+   steps { sh 'git url' }
+  }
+ stage ( 'build' ) {
+   steps { sh 'mvn clean compile' }   
+ }
+}
+}
